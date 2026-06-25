@@ -1,0 +1,145 @@
+USE BoholBusTrackerDb;
+GO
+
+------------------------------------------------------------
+-- 1. Users
+------------------------------------------------------------
+INSERT INTO Users
+    (Username, Email, PasswordHash, FirstName, LastName, PhoneNumber, Role, IsActive, CreatedAt)
+VALUES
+    ('admin',      'admin@boholbustracker.local',      'HASHED_PASSWORD_HERE', 'System', 'Admin',      '0000000000', 0, 1, SYSUTCDATETIME()), -- 0 = Admin
+    ('dispatcher', 'dispatcher@boholbustracker.local', 'HASHED_PASSWORD_HERE', 'Main',   'Dispatcher', '0000000001', 1, 1, SYSUTCDATETIME()), -- 1 = Dispatcher
+    ('driver1',    'driver1@boholbustracker.local',    'HASHED_PASSWORD_HERE', 'Juan',   'Driver',     '0000000002', 2, 1, SYSUTCDATETIME()), -- 2 = Driver
+    ('passenger1', 'pass1@boholbustracker.local',      'HASHED_PASSWORD_HERE', 'Maria',  'Passenger',  '0000000003', 3, 1, SYSUTCDATETIME()); -- 3 = Passenger
+GO
+
+------------------------------------------------------------
+-- 2. Drivers / Passengers
+------------------------------------------------------------
+-- Get IDs
+DECLARE @DriverUserId INT = (SELECT TOP 1 UserId FROM Users WHERE Username = 'driver1');
+DECLARE @PassengerUserId INT = (SELECT TOP 1 UserId FROM Users WHERE Username = 'passenger1');
+
+INSERT INTO Drivers
+    (UserId, LicenseNumber, LicenseExpiry, Experience, YearsOfExperience, IsActive, CreatedAt)
+VALUES
+    (@DriverUserId, 'DL-BOHOL-0001', DATEADD(YEAR, 3, SYSUTCDATETIME()), 'Provincial routes', 5, 1, SYSUTCDATETIME());
+
+INSERT INTO Passengers
+    (UserId, EmergencyContact, EmergencyContactName, IsVerified, CreatedAt)
+VALUES
+    (@PassengerUserId, '09170000000', 'Emergency Contact 1', 1, SYSUTCDATETIME());
+GO
+
+------------------------------------------------------------
+-- 3. Routes (Tagbilaran → ... )
+------------------------------------------------------------
+INSERT INTO Routes
+    (RouteName, OriginCity, DestinationCity, Distance, EstimatedTravelTimeMinutes, FareAmount, IsActive, CreatedAt)
+VALUES
+    ('Tagbilaran → Ubay',          'Tagbilaran', 'Ubay',          120.5, 180, 200.00, 1, SYSUTCDATETIME()),
+    ('Tagbilaran → Anda',          'Tagbilaran', 'Anda',           75.3, 120, 180.00, 1, SYSUTCDATETIME()),
+    ('Tagbilaran → Jagna',         'Tagbilaran', 'Jagna',          95.0, 140, 150.00, 1, SYSUTCDATETIME()),
+    ('Tagbilaran → Tubigon',       'Tagbilaran', 'Tubigon',        57.2,  90, 120.00, 1, SYSUTCDATETIME()),
+    ('Tagbilaran → Talibon',       'Tagbilaran', 'Talibon',        80.0, 130, 170.00, 1, SYSUTCDATETIME()),
+    ('Tagbilaran → Panglao Airport', 'Tagbilaran', 'Panglao',     18.5,  30,  50.00, 1, SYSUTCDATETIME());
+GO
+
+------------------------------------------------------------
+-- 4. RouteStops (simplified)
+------------------------------------------------------------
+DECLARE @Route_Tag_Ubay      INT = (SELECT RouteId FROM Routes WHERE RouteName = 'Tagbilaran → Ubay');
+DECLARE @Route_Tag_Anda      INT = (SELECT RouteId FROM Routes WHERE RouteName = 'Tagbilaran → Anda');
+DECLARE @Route_Tag_Jagna     INT = (SELECT RouteId FROM Routes WHERE RouteName = 'Tagbilaran → Jagna');
+DECLARE @Route_Tag_Tubigon   INT = (SELECT RouteId FROM Routes WHERE RouteName = 'Tagbilaran → Tubigon');
+DECLARE @Route_Tag_Talibon   INT = (SELECT RouteId FROM Routes WHERE RouteName = 'Tagbilaran → Talibon');
+DECLARE @Route_Tag_Panglao   INT = (SELECT RouteId FROM Routes WHERE RouteName = 'Tagbilaran → Panglao Airport');
+
+-- Tagbilaran → Ubay
+INSERT INTO RouteStops
+    (RouteId, StopName, Municipality, Latitude, Longitude, StopSequence, EstimatedArrivalMinutes, IsTerminal, CreatedAt)
+VALUES
+    (@Route_Tag_Ubay, 'Tagbilaran City', 'Tagbilaran', 9.65, 123.85, 1,   0, 0, SYSUTCDATETIME()),
+    (@Route_Tag_Ubay, 'Baclayon',        'Baclayon',   9.61, 123.83, 2,  20, 0, SYSUTCDATETIME()),
+    (@Route_Tag_Ubay, 'Loboc',           'Loboc',      9.59, 124.03, 3,  40, 0, SYSUTCDATETIME()),
+    (@Route_Tag_Ubay, 'Bilar',           'Bilar',      9.64, 124.02, 4,  60, 0, SYSUTCDATETIME()),
+    (@Route_Tag_Ubay, 'Carmen',          'Carmen',     9.75, 124.00, 5,  80, 0, SYSUTCDATETIME()),
+    (@Route_Tag_Ubay, 'Ubay',            'Ubay',      10.07, 124.57, 6, 180, 1, SYSUTCDATETIME());
+
+-- Tagbilaran → Panglao Airport
+INSERT INTO RouteStops
+    (RouteId, StopName, Municipality, Latitude, Longitude, StopSequence, EstimatedArrivalMinutes, IsTerminal, CreatedAt)
+VALUES
+    (@Route_Tag_Panglao, 'Tagbilaran City', 'Tagbilaran', 9.65, 123.85, 1,  0, 0, SYSUTCDATETIME()),
+    (@Route_Tag_Panglao, 'Panglao Airport', 'Panglao',    9.57, 123.77, 2, 30, 1, SYSUTCDATETIME());
+GO
+
+------------------------------------------------------------
+-- 5. Buses
+------------------------------------------------------------
+DECLARE @DriverId INT = (SELECT TOP 1 DriverId FROM Drivers ORDER BY DriverId);
+
+INSERT INTO Buses
+    (PlateNumber, BusName, Company, Capacity, Manufacturer, YearManufactured, Color, CurrentDriverId, IsActive, CreatedAt)
+VALUES
+    ('ABC-123', 'Tagbilaran Express 1', 0, 50, 'Isuzu',      2018, 'Blue',  @DriverId, 1, SYSUTCDATETIME()),
+    ('DEF-456', 'Anda Shuttle',         1, 45, 'Hino',       2017, 'Green', NULL,      1, SYSUTCDATETIME()),
+    ('GHI-789', 'Panglao Shuttle',      0, 40, 'Mitsubishi', 2019, 'White', NULL,      1, SYSUTCDATETIME());
+GO
+
+------------------------------------------------------------
+-- 6. Schedules
+------------------------------------------------------------
+DECLARE @Bus1 INT = (SELECT BusId FROM Buses WHERE PlateNumber = 'ABC-123');
+DECLARE @Bus2 INT = (SELECT BusId FROM Buses WHERE PlateNumber = 'GHI-789');
+
+INSERT INTO Schedules
+    (BusId, RouteId, DriverId, DepartureTime, ArrivalTime, IsActive, CreatedAt)
+VALUES
+    (@Bus1, @Route_Tag_Ubay,    @DriverId, DATEADD(HOUR,  1, SYSUTCDATETIME()), DATEADD(HOUR,  4, SYSUTCDATETIME()), 1, SYSUTCDATETIME()),
+    (@Bus2, @Route_Tag_Panglao, @DriverId, DATEADD(MINUTE,30, SYSUTCDATETIME()), DATEADD(HOUR, 1, SYSUTCDATETIME()), 1, SYSUTCDATETIME());
+GO
+
+------------------------------------------------------------
+-- 7. GPSLocations (latest positions)
+------------------------------------------------------------
+INSERT INTO GPSLocations
+    (BusId, Latitude, Longitude, Altitude, Speed, Heading, Accuracy, RecordedAt, Address)
+VALUES
+    (@Bus1, 9.60, 123.90, 0, 60,  90, 5, DATEADD(MINUTE, -5, SYSUTCDATETIME()), 'Near Loboc'),
+    (@Bus2, 9.58, 123.80, 0, 40, 180, 5, DATEADD(MINUTE, -2, SYSUTCDATETIME()), 'Approaching Panglao Airport');
+GO
+
+------------------------------------------------------------
+-- 8. BusStatuses
+------------------------------------------------------------
+INSERT INTO BusStatuses
+    (BusId, Status, CurrentPassengers, NextStopId, Notes, RecordedAt)
+VALUES
+    (@Bus1, 1, 20, (SELECT TOP 1 StopId FROM RouteStops WHERE RouteId = @Route_Tag_Ubay AND StopSequence = 3), 'On schedule', SYSUTCDATETIME()),
+    (@Bus2, 2, 30, (SELECT TOP 1 StopId FROM RouteStops WHERE RouteId = @Route_Tag_Panglao AND StopSequence = 2), 'Approaching airport', SYSUTCDATETIME());
+GO
+
+------------------------------------------------------------
+-- 9. Tickets
+------------------------------------------------------------
+DECLARE @PassengerId INT = (SELECT TOP 1 PassengerId FROM Passengers ORDER BY PassengerId);
+DECLARE @Schedule1 INT = (SELECT TOP 1 ScheduleId FROM Schedules WHERE BusId = @Bus1);
+DECLARE @Schedule2 INT = (SELECT TOP 1 ScheduleId FROM Schedules WHERE BusId = @Bus2);
+
+INSERT INTO Tickets
+    (PassengerId, BusId, ScheduleId, RouteId, TicketNumber, SeatNumber, Price, IsUsed, PurchaseDate, UsedDate, CreatedAt)
+VALUES
+    (@PassengerId, @Bus1, @Schedule1, @Route_Tag_Ubay,    'T-UBAY-0001',   1, 200.00, 0, DATEADD(HOUR, -1, SYSUTCDATETIME()), NULL, SYSUTCDATETIME()),
+    (@PassengerId, @Bus2, @Schedule2, @Route_Tag_Panglao, 'T-PANGLAO-0001',2,  50.00, 0, DATEADD(MINUTE, -30, SYSUTCDATETIME()), NULL, SYSUTCDATETIME());
+GO
+
+------------------------------------------------------------
+-- 10. Alerts
+------------------------------------------------------------
+INSERT INTO Alerts
+    (BusId, AlertType, Title, Message, IsResolved, CreatedAt)
+VALUES
+    (@Bus1, 0, 'Traffic Delay',  'Traffic build-up near Loboc. Expect 15-minute delay.', 0, SYSUTCDATETIME()),
+    (@Bus2, 1, 'Maintenance',    'Minor engine check required at Panglao depot.',        0, SYSUTCDATETIME());
+GO
