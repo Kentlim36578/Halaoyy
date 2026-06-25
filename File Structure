@@ -1,0 +1,428 @@
+(Unfinished Project)
+
+├───.vs
+│   │   ProjectSettings.json
+│   │   slnx.sqlite
+│   │   VSWorkspaceState.json
+│   │
+│   └───BoholBusTrackerSystem.slnx
+│       └───v18
+│               DocumentLayout.json
+│
+└───BoholBusTrackerSystem
+    │   BoholBusTrackerSystem.slnx
+    │
+    ├───BoholBusTracker.Admin
+    │   │   appsettings.Development.json
+    │   │   appsettings.json
+    │   │   BoholBusTracker.Admin.csproj
+    │   │   BoholBusTracker.Admin.csproj.user
+    │   │   Program.cs
+    │   │
+    │   ├───bin
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   ├───Controllers
+    │   │       HomeController.cs
+    │   │
+    │   ├───Models
+    │   │       ErrorViewModel.cs
+    │   │
+    │   ├───obj
+    │   │   │   BoholBusTracker.Admin.csproj.nuget.dgspec.json
+    │   │   │   BoholBusTracker.Admin.csproj.nuget.g.props
+    │   │   │   BoholBusTracker.Admin.csproj.nuget.g.targets
+    │   │   │   project.assets.json
+    │   │   │   project.nuget.cache
+    │   │   │
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   │           │   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    │   │           │   BoholBusTracker.Admin.AssemblyInfo.cs
+    │   │           │   BoholBusTracker.Admin.AssemblyInfoInputs.cache
+    │   │           │   BoholBusTracker.Admin.assets.cache
+    │   │           │   BoholBusTracker.Admin.GeneratedMSBuildEditorConfig.editorconfig
+    │   │           │   BoholBusTracker.Admin.GlobalUsings.g.cs
+    │   │           │   BoholBusTracker.Admin.RazorAssemblyInfo.cache
+    │   │           │   BoholBusTracker.Admin.RazorAssemblyInfo.cs
+    │   │           │   rpswa.dswa.cache.json
+    │   │           │   staticwebassets.removed.txt
+    │   │           │
+    │   │           ├───ref
+    │   │           ├───refint
+    │   │           └───staticwebassets
+    │   ├───Properties
+    │   │       launchSettings.json
+    │   │
+    │   ├───Views
+    │   │   │   _ViewImports.cshtml
+    │   │   │   _ViewStart.cshtml
+    │   │   │
+    │   │   ├───Home
+    │   │   │       Index.cshtml
+    │   │   │       Privacy.cshtml
+    │   │   │
+    │   │   └───Shared
+    │   │           Error.cshtml
+    │   │           _Layout.cshtml
+    │   │           _Layout.cshtml.css
+    │   │           _ValidationScriptsPartial.cshtml
+    │   │
+    │   └───wwwroot
+    │       │   favicon.ico
+    │       │
+    │       ├───css
+    │       │       site.css
+    │       │
+    │       ├───js
+    │       │       site.js
+    │       │
+    │       └───lib
+    │           ├───bootstrap
+    │           │   │   LICENSE
+    │           │   │
+    │           │   └───dist
+    │           │       ├───css
+    │           │       │       bootstrap-grid.css
+    │           │       │       bootstrap-grid.css.map
+    │           │       │       bootstrap-grid.min.css
+    │           │       │       bootstrap-grid.min.css.map
+    │           │       │       bootstrap-grid.rtl.css
+    │           │       │       bootstrap-grid.rtl.css.map
+    │           │       │       bootstrap-grid.rtl.min.css
+    │           │       │       bootstrap-grid.rtl.min.css.map
+    │           │       │       bootstrap-reboot.css
+    │           │       │       bootstrap-reboot.css.map
+    │           │       │       bootstrap-reboot.min.css
+    │           │       │       bootstrap-reboot.min.css.map
+    │           │       │       bootstrap-reboot.rtl.css
+    │           │       │       bootstrap-reboot.rtl.css.map
+    │           │       │       bootstrap-reboot.rtl.min.css
+    │           │       │       bootstrap-reboot.rtl.min.css.map
+    │           │       │       bootstrap-utilities.css
+    │           │       │       bootstrap-utilities.css.map
+    │           │       │       bootstrap-utilities.min.css
+    │           │       │       bootstrap-utilities.min.css.map
+    │           │       │       bootstrap-utilities.rtl.css
+    │           │       │       bootstrap-utilities.rtl.css.map
+    │           │       │       bootstrap-utilities.rtl.min.css
+    │           │       │       bootstrap-utilities.rtl.min.css.map
+    │           │       │       bootstrap.css
+    │           │       │       bootstrap.css.map
+    │           │       │       bootstrap.min.css
+    │           │       │       bootstrap.min.css.map
+    │           │       │       bootstrap.rtl.css
+    │           │       │       bootstrap.rtl.css.map
+    │           │       │       bootstrap.rtl.min.css
+    │           │       │       bootstrap.rtl.min.css.map
+    │           │       │
+    │           │       └───js
+    │           │               bootstrap.bundle.js
+    │           │               bootstrap.bundle.js.map
+    │           │               bootstrap.bundle.min.js
+    │           │               bootstrap.bundle.min.js.map
+    │           │               bootstrap.esm.js
+    │           │               bootstrap.esm.js.map
+    │           │               bootstrap.esm.min.js
+    │           │               bootstrap.esm.min.js.map
+    │           │               bootstrap.js
+    │           │               bootstrap.js.map
+    │           │               bootstrap.min.js
+    │           │               bootstrap.min.js.map
+    │           │
+    │           ├───jquery
+    │           │   │   LICENSE.txt
+    │           │   │
+    │           │   └───dist
+    │           │           jquery.js
+    │           │           jquery.min.js
+    │           │           jquery.min.map
+    │           │
+    │           ├───jquery-validation
+    │           │   │   LICENSE.md
+    │           │   │
+    │           │   └───dist
+    │           │           additional-methods.js
+    │           │           additional-methods.min.js
+    │           │           jquery.validate.js
+    │           │           jquery.validate.min.js
+    │           │
+    │           └───jquery-validation-unobtrusive
+    │                   jquery.validate.unobtrusive.js
+    │                   jquery.validate.unobtrusive.min.js
+    │                   LICENSE.txt
+    │
+    ├───BoholBusTracker.API
+    │   │   appsettings.Development.json
+    │   │   appsettings.json
+    │   │   BoholBusTracker.API.csproj
+    │   │   BoholBusTracker.API.csproj.user
+    │   │   BoholBusTracker.API.http
+    │   │   Program.cs
+    │   │   WeatherForecast.cs
+    │   │
+    │   ├───bin
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   ├───Controllers
+    │   │       WeatherForecastController.cs
+    │   │
+    │   ├───obj
+    │   │   │   BoholBusTracker.API.csproj.nuget.dgspec.json
+    │   │   │   BoholBusTracker.API.csproj.nuget.g.props
+    │   │   │   BoholBusTracker.API.csproj.nuget.g.targets
+    │   │   │   project.assets.json
+    │   │   │   project.nuget.cache
+    │   │   │
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   │           │   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    │   │           │   BoholBusTracker.API.AssemblyInfo.cs
+    │   │           │   BoholBusTracker.API.AssemblyInfoInputs.cache
+    │   │           │   BoholBusTracker.API.assets.cache
+    │   │           │   BoholBusTracker.API.csproj.AssemblyReference.cache
+    │   │           │   BoholBusTracker.API.GeneratedMSBuildEditorConfig.editorconfig
+    │   │           │   BoholBusTracker.API.GlobalUsings.g.cs
+    │   │           │   rpswa.dswa.cache.json
+    │   │           │   staticwebassets.removed.txt
+    │   │           │
+    │   │           ├───ref
+    │   │           ├───refint
+    │   │           └───staticwebassets
+    │   └───Properties
+    │           launchSettings.json
+    │
+    ├───BoholBusTracker.Core
+    │   │   BoholBusTracker.Core.csproj
+    │   │
+    │   ├───bin
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   ├───DTOs
+    │   │       AlertDto.cs
+    │   │       ApiResponse.cs
+    │   │       AuthResponseDto.cs
+    │   │       BusDto.cs
+    │   │       BusStatusDto.cs
+    │   │       CreateAlertDto.cs
+    │   │       CreateBusDto.cs
+    │   │       CreateBusStatusDto.cs
+    │   │       CreateDriverDto.cs
+    │   │       CreatePassengerDto.cs
+    │   │       CreateRouteDto.cs
+    │   │       CreateRouteStopDto.cs
+    │   │       CreateScheduleDto.cs
+    │   │       CreateTicketDto.cs
+    │   │       CreateUserDto.cs
+    │   │       DeviceStatusDto.cs
+    │   │       DriverDto.cs
+    │   │       ETADto.cs
+    │   │       GPSLocationDto.cs
+    │   │       LoginDto.cs
+    │   │       NearbyBusDto.cs
+    │   │       PaginationDto.cs
+    │   │       PassengerDto.cs
+    │   │       RefreshTokenDto.cs
+    │   │       RouteDto.cs
+    │   │       RouteStopDto.cs
+    │   │       ScheduleDto.cs
+    │   │       TicketDto.cs
+    │   │       UpdateBusDto.cs
+    │   │       UpdateUserDto.cs
+    │   │       UserDto.cs
+    │   │
+    │   ├───Enums
+    │   │       AlertType.cs
+    │   │       BusCompany.cs
+    │   │       BusStatusEnum.cs
+    │   │       DeviceStatus.cs
+    │   │       DeviceType.cs
+    │   │       UserRole.cs
+    │   │
+    │   ├───Interfaces
+    │   │       IAlertService.cs
+    │   │       IAuthService.cs
+    │   │       IBusService.cs
+    │   │       IBusStatusService.cs
+    │   │       IDeviceService.cs
+    │   │       IDriverService.cs
+    │   │       IEmailService.cs
+    │   │       IGPSLocationService.cs
+    │   │       IMapService.cs
+    │   │       IPassengerService.cs
+    │   │       IPasswordHasher.cs
+    │   │       IRepository.cs
+    │   │       IRouteService.cs
+    │   │       IRouteStopService.cs
+    │   │       IScheduleService.cs
+    │   │       ITicketService.cs
+    │   │       ITokenService.cs
+    │   │       ITrackingHubService.cs
+    │   │       IUnitOfWork.cs
+    │   │       IUserService.cs
+    │   │       IValidationService.cs
+    │   │
+    │   ├───Models
+    │   │       Alert.cs
+    │   │       Bus.cs
+    │   │       BusStatus.cs
+    │   │       Driver.cs
+    │   │       GPSLocation.cs
+    │   │       Passenger.cs
+    │   │       Route.cs
+    │   │       RouteStop.cs
+    │   │       Schedule.cs
+    │   │       Ticket.cs
+    │   │       User.cs
+    │   │
+    │   └───obj
+    │       │   BoholBusTracker.Core.csproj.nuget.dgspec.json
+    │       │   BoholBusTracker.Core.csproj.nuget.g.props
+    │       │   BoholBusTracker.Core.csproj.nuget.g.targets
+    │       │   project.assets.json
+    │       │   project.nuget.cache
+    │       │
+    │       └───Debug
+    │           └───net8.0
+    │               │   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    │               │   BoholBusTracker.Core.AssemblyInfo.cs
+    │               │   BoholBusTracker.Core.AssemblyInfoInputs.cache
+    │               │   BoholBusTracker.Core.assets.cache
+    │               │   BoholBusTracker.Core.csproj.AssemblyReference.cache
+    │               │   BoholBusTracker.Core.GeneratedMSBuildEditorConfig.editorconfig
+    │               │   BoholBusTracker.Core.GlobalUsings.g.cs
+    │               │
+    │               ├───ref
+    │               └───refint
+    ├───BoholBusTracker.Data
+    │   │   BoholBusTracker.Data.csproj
+    │   │   Class1.cs
+    │   │
+    │   ├───bin
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   ├───Context
+    │   │       BoholBusTrackerDbContext.cs
+    │   │
+    │   ├───Database
+    │   ├───obj
+    │   │   │   BoholBusTracker.Data.csproj.nuget.dgspec.json
+    │   │   │   BoholBusTracker.Data.csproj.nuget.g.props
+    │   │   │   BoholBusTracker.Data.csproj.nuget.g.targets
+    │   │   │   project.assets.json
+    │   │   │   project.nuget.cache
+    │   │   │
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   │           │   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    │   │           │   BoholBusTracker.Data.AssemblyInfo.cs
+    │   │           │   BoholBusTracker.Data.AssemblyInfoInputs.cache
+    │   │           │   BoholBusTracker.Data.assets.cache
+    │   │           │   BoholBusTracker.Data.csproj.AssemblyReference.cache
+    │   │           │   BoholBusTracker.Data.GeneratedMSBuildEditorConfig.editorconfig
+    │   │           │   BoholBusTracker.Data.GlobalUsings.g.cs
+    │   │           │
+    │   │           ├───ref
+    │   │           └───refint
+    │   └───Repositories
+    ├───BoholBusTracker.Hardware
+    │   │   BoholBusTracker.Hardware.csproj
+    │   │   Class1.cs
+    │   │
+    │   ├───bin
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   └───obj
+    │       │   BoholBusTracker.Hardware.csproj.nuget.dgspec.json
+    │       │   BoholBusTracker.Hardware.csproj.nuget.g.props
+    │       │   BoholBusTracker.Hardware.csproj.nuget.g.targets
+    │       │   project.assets.json
+    │       │   project.nuget.cache
+    │       │
+    │       └───Debug
+    │           └───net8.0
+    │               │   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    │               │   BoholBusTracker.Hardware.AssemblyInfo.cs
+    │               │   BoholBusTracker.Hardware.AssemblyInfoInputs.cache
+    │               │   BoholBusTracker.Hardware.assets.cache
+    │               │   BoholBusTracker.Hardware.GeneratedMSBuildEditorConfig.editorconfig
+    │               │   BoholBusTracker.Hardware.GlobalUsings.g.cs
+    │               │
+    │               ├───ref
+    │               └───refint
+    ├───BoholBusTracker.MobileDLL
+    │   │   BoholBusTracker.MobileDLL.csproj
+    │   │   Class1.cs
+    │   │
+    │   ├───bin
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   └───obj
+    │       │   BoholBusTracker.MobileDLL.csproj.nuget.dgspec.json
+    │       │   BoholBusTracker.MobileDLL.csproj.nuget.g.props
+    │       │   BoholBusTracker.MobileDLL.csproj.nuget.g.targets
+    │       │   project.assets.json
+    │       │   project.nuget.cache
+    │       │
+    │       └───Debug
+    │           └───net8.0
+    │               │   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    │               │   BoholBusTracker.MobileDLL.AssemblyInfo.cs
+    │               │   BoholBusTracker.MobileDLL.AssemblyInfoInputs.cache
+    │               │   BoholBusTracker.MobileDLL.assets.cache
+    │               │   BoholBusTracker.MobileDLL.GeneratedMSBuildEditorConfig.editorconfig
+    │               │   BoholBusTracker.MobileDLL.GlobalUsings.g.cs
+    │               │
+    │               ├───ref
+    │               └───refint
+    ├───BoholBusTracker.Services
+    │   │   BoholBusTracker.Services.csproj
+    │   │   Class1.cs
+    │   │
+    │   ├───bin
+    │   │   └───Debug
+    │   │       └───net8.0
+    │   └───obj
+    │       │   BoholBusTracker.Services.csproj.nuget.dgspec.json
+    │       │   BoholBusTracker.Services.csproj.nuget.g.props
+    │       │   BoholBusTracker.Services.csproj.nuget.g.targets
+    │       │   project.assets.json
+    │       │   project.nuget.cache
+    │       │
+    │       └───Debug
+    │           └───net8.0
+    │               │   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    │               │   BoholBusTracker.Services.AssemblyInfo.cs
+    │               │   BoholBusTracker.Services.AssemblyInfoInputs.cache
+    │               │   BoholBusTracker.Services.assets.cache
+    │               │   BoholBusTracker.Services.GeneratedMSBuildEditorConfig.editorconfig
+    │               │   BoholBusTracker.Services.GlobalUsings.g.cs
+    │               │
+    │               ├───ref
+    │               └───refint
+    └───BoholBusTracker.Tests
+        │   BoholBusTracker.Tests.csproj
+        │   UnitTest1.cs
+        │
+        ├───bin
+        │   └───Debug
+        │       └───net8.0
+        └───obj
+            │   BoholBusTracker.Tests.csproj.nuget.dgspec.json
+            │   BoholBusTracker.Tests.csproj.nuget.g.props
+            │   BoholBusTracker.Tests.csproj.nuget.g.targets
+            │   project.assets.json
+            │   project.nuget.cache
+            │
+            └───Debug
+                └───net8.0
+                    │   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+                    │   BoholBusTracker.Tests.AssemblyInfo.cs
+                    │   BoholBusTracker.Tests.AssemblyInfoInputs.cache
+                    │   BoholBusTracker.Tests.assets.cache
+                    │   BoholBusTracker.Tests.csproj.AssemblyReference.cache
+                    │   BoholBusTracker.Tests.GeneratedMSBuildEditorConfig.editorconfig
+                    │   BoholBusTracker.Tests.GlobalUsings.g.cs
+                    │
+                    ├───ref
+                    └───refint
